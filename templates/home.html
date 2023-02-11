@@ -1,0 +1,90 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<style>
+  @import url('https://fonts.cdnfonts.com/css/avenir-lt-std');
+
+  main a {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 304px;
+    height: 254px;
+    left: 23px;
+    top: 192px;
+
+    font-family: 'Avenir LT Std';
+    font-style: normal;
+    font-weight: 750;
+    font-size: 32px;
+    line-height: 64px;
+    /* or 198% */
+
+    display: flex;
+    align-items: center;
+
+    /* OD Colors/OD White */
+
+    color: #F5F5F5;
+    text-decoration: none;
+
+
+  }
+
+  body {
+
+    background-color: black;
+    background-image: url({% static 'images/splash-screen.png' %} );
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+</style>
+
+{% if user.is_authenticated %}
+Hi {{ user.username }}!
+<script type="text/javascript">
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+  
+  window.onload = function() {
+    goToLoginScreen();
+  }
+  
+  
+    const goToLoginScreen = async () => {
+      await delay(1000);
+      // Now safe to use device APIs
+      window.location.href = '{% url 'ourdate_events:index' %}'
+    }
+  </script>
+{% else %}
+
+<a href="{% url 'account_login' %}">OurDate<br>
+  Get curated events<br>
+  Go and meet others<br>
+  Get matched!<br>
+</a>
+<script type="text/javascript">
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
+window.onload = function() {
+  goToLoginScreen();
+}
+
+
+  const goToLoginScreen = async () => {
+    await delay(5000);
+    // Now safe to use device APIs
+    window.location.href = '{% url 'account_login' %}'
+  }
+</script>
+
+{% endif %}
+{% endblock %}

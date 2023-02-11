@@ -1,0 +1,203 @@
+/* iOS Native App Default Style implemented in CSS */
+
+/* Bootstrapping … */
+* {
+	margin: 0;
+	padding: 0;
+	font-size: inherit;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: "Helvetica Neue", sans-serif;
+}
+
+/* Striped blue app background */
+#app {
+	width: 100%;
+	min-height: 100%;
+	-webkit-text-size-adjust: none;
+	background: linear-gradient(left, 
+		#c5ccd4 5px,
+		#cbd2d8 5px,
+		#cbd2d8 7px
+	);
+	background-size: 7px 100%;
+}
+
+/* Navigation Bar */
+.navigationbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 44px;
+	margin-bottom: 10px;
+	background: #6d84a2 linear-gradient(
+		top,
+		rgba(255,255,255,.7),
+		rgba(255,255,255,.4) 1px,
+		rgba(255,255,255,.2) 22px,
+		rgba(255,255,255,.15) 22px,
+		rgba(255,255,255,0) 42px,
+		rgba(0,0,0,.4)
+	);
+	text-align: center;
+	line-height: 44px;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: rgba(0,0,0,.5) 0 -1px;
+}
+
+/* Content Area */
+#content {
+	padding: 54px 10px 59px 10px;
+}
+
+
+/* Menu List */
+ul.menu {
+	list-style: none;
+	background: #FFF;
+	border: 1px solid rgba(0,0,0,.27);
+	border-radius: 8px;
+	font-size: 17px;
+}
+
+ul.menu li {
+	min-height: 19px;
+	border-top: 1px solid rgba(0,0,0,.27);
+	padding: 10px;
+}        
+
+ul.menu li:first-child {
+	border-top: 0;
+}
+
+ul.menu li:first-child a {
+	border-radius: 8px 8px 0 0;
+}
+
+ul.menu li:last-child a {
+	border-radius: 0 0 8px 8px;
+}
+
+ul.menu li, ul.menu li a {
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+ul.menu li a {
+	display: block;
+	margin: -10px;
+	padding: 10px;
+}
+
+ul.menu li a:active {
+	background-color: #0275ee;
+	color: #FFF;
+}
+
+/* Tab Bar */
+.tabbar {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-size: 10px;
+	height: 49px;
+	background: #000 linear-gradient(top, 
+		#1C1C1C 0%,
+		#1C1C1C 2%,
+		#575757 2%,
+		#303030 5%,
+		#141414 51%,
+		#000 51%,
+		#000 100%
+	);
+}
+
+.tabbar ul {
+	display: box;
+	box-pack: justify;
+	box-orient: horizontal;
+	list-style: none;
+	height: 46px;
+	padding-top: 1px;
+}
+
+.tabbar li {
+	-webkit-box-flex: 1;
+	height: 100%;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.tabbar a {
+	display: block;
+	box-sizing: border-box;
+	height: 44px;
+	margin: 2px;
+	position: relative;
+	font-weight: bold;
+	color: #999;
+	text-decoration: none;
+	padding-top: 33px;
+	overflow: hidden;
+	border-radius: 4px;
+	-webkit-touch-callout: none;
+}
+
+.tabbar li.active a {
+	color: #FFF;
+	background: rgba(255,255,255,.13);
+}
+
+.tabbar .icon {
+	display: block;
+	position: absolute;
+	top: 2px;
+	left: 50%;
+	width: 30px;
+	height: 30px;
+	margin-left: -15px;
+	background: #555 linear-gradient(top, rgba(255,255,255,0.3) 25%, rgba(255,255,255,0) 75%);
+	-webkit-mask-size: 30px 30px;
+	-webkit-mask-position: 50% 0;
+}
+
+.tabbar li.active .icon {
+	background: linear-gradient(-84deg, #FFF 0%, #7db9ee 52%, rgba(0,0,0,0) 52%),
+		    linear-gradient(top, #0429e4, #40cefb);
+}
+
+.tabbar li.one .icon {
+	-webkit-mask-image: url(http://code.pb.io/ios-css/images/tabbar-icon-flower.png);
+}
+
+.tabbar li.two .icon {
+	-webkit-mask-image: url(http://code.pb.io/ios-css/images/tabbar-icon-luggage.png);
+}
+
+.tabbar li.three .icon {
+	-webkit-mask-image: url(http://code.pb.io/ios-css/images/tabbar-icon-ghost.png);
+}
+
+/* Info Text */
+p.info {
+	margin: 10px;
+	text-align: center;
+	font-size: 14px;
+	color: #4c566c;
+	text-shadow: rgba(255,255,255,.75) 0 1px;
+}

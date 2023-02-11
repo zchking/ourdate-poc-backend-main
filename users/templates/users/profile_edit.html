@@ -1,0 +1,20 @@
+{% extends "account/base.html" %}
+{% load static %}
+
+{% block extra_head %} 
+
+{% endblock %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+
+{% load material_form %}
+
+
+<grid container spacing="{2} columnt"
+<img style="width: 60%; height: auto; margin: auto; margin-top: 5%; display:block" src="{% static 'images/350-w-headline.png' %}" />
+<form method="POST">
+  {% csrf_token %}
+  {% form form=form %}{% endform %}
+  <button type="submit" name="_submit" class="btn">Submit</button>
+</form>
+{% endblock %}

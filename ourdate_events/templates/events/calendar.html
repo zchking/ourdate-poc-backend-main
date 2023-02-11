@@ -1,0 +1,60 @@
+{% extends 'events/base.html' %}
+
+{% block title %}
+Events
+{% endblock %}
+
+{% block content %}
+<div class="clearfix">
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+	
+			{% if event_list %}
+			{% load tz %}
+			{% load easy_maps_tags  %}
+			{% for event in event_list %}
+
+			<div class="row">
+				<div class="col-md-12">
+					<a href="/events/event/{{ event.id }}/">	
+<div class="hero" id="hero-{{ event.id }}">
+	</div></a>
+					<img height="64px" width="64px" src="{{ event.author.profile.avatar.url }}" alt="picture of {{user.username}}">
+
+					<h3><a href="/events/event/{{ event.id }}/">{{ event.title }}</a></h3>
+					Currated by {{ event.author.username }}
+				
+				
+				<p>{{ event.fee }}</p>
+				{% if event.address %}
+					<p>{{ event.address }}</p>
+				{% endif %}
+	<style>
+		#hero-{{ event.id }} {
+
+			background: url("{{ event.hero_image.url }}") 50% 50% no-repeat;
+			
+			width: 100%;
+			height: 300px;
+			background-size: contain;
+		}
+		#hero-{{ event.id }}:hover {
+			opacity: 0.5;
+		}
+		</style>			
+			</div>
+			{% endfor %}
+			{% else %}
+			<div class="row">
+				<div class="col-md-12">
+					<h3>No events</h3>
+					<h1>😿</h1>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+	
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+    <div class="row my-3 p-3">
+        <h1>This is the profile page for {{ user.username }}</h1>
+        <div><a href="edit/{{ user.profile.id }}/">Edit Profile</a></div>
+    </div>
+
+<img src="{{ user.profile.avatar.url }}" alt="picture of {{user.username}}">
+<div>
+    {{ user.profile.birthday}}
+</div>
+<div>
+    I am a: 
+    {% for gender in user.profile.gender.all %}
+    {{ gender }}
+    {% endfor %}
+</div>
+<div>
+    Seeking a:<ul>
+    {% for option in user.profile.looking_for.all %}
+   <li>{{ option }}</li>
+    {% endfor %}
+    </ul>
+    </div>
+    <div>
+        About me: <p>
+        {{ user.profile.bio }}
+        </p>
+    </div>
+    <div>
+        Occupation: <p>
+        {{ user.profile.occupation }}
+        </p>
+        </div>
+        <div>
+            Education: <p>
+                <ul>
+                    {% for degree in user.profile.education.all %}
+                    <li>{{ degree }}</li>
+                    {% endfor %}
+
+                </ul>
+        </div>
+        <div>
+            Relationship Status: <p>
+                <ul>
+                    {% for relationship in user.profile.relationship_status.all %}
+                    <li>{{ relationship }}</li>
+                    {% endfor %}
+                </ul>
+        </div>
+        <div>
+            I am looking for: <p>
+                <ul>
+                    {% for option in user.profile.looking_for.all %}
+                    <li>{{ option }}</li>
+                    {% endfor %}
+                </ul>
+</p>
+        </div>
+<div>
+    My favorite date activites:<p>
+        <ul>
+            {% for activity in user.profile.date_activities.all %}   
+            <li>{{ activity }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+</div>
+<div>
+    Dietary Prferences:<p>
+        <ul>
+            {% for diet in user.profile.diet.all %}
+            <li>{{ diet }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+
+</div>
+<div>
+    Family Plans:<p>
+        <ul>
+            {% for plan in user.profile.family_plans.all %}
+            <li>{{ plan }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+</div>
+<div>
+    Drinking Habits:<p>
+        <ul>
+            {% for usage in user.profile.alcohol_usage.all %}
+            <li>{{ usage }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+</div>
+<div>
+    Smoking Habits:<p>
+        <ul>
+            {% for usage in user.profile.tobacco_usage.all %}
+            <li>{{ usage }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+</div>
+<div> 
+    Canabis Habits:<p>
+        <ul>
+            {% for usage in user.profile.weed_usage.all %}
+            <li>{{ usage }}</li>
+            {% endfor %}
+        </ul>
+</div>
+<div>
+    Other drugs:<p>
+        <ul>
+            {% for usage in user.profile.other_drug_usage.all %}
+            <li>{{ usage }}</li>
+            {% endfor %}
+        </ul>
+    </p>
+</div>
+
+{% endblock content %}

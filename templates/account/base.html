@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block head_title %}{% endblock %}</title>
+
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>    
+<script type=text/javascript" src="{% static 'js/jquery-ui.js' %}"></script>
+
+<link rel="stylesheet" type='text/css' href="{% static 'css/jquery-ui/smoothness/jquery-ui.css' %}" />
+    {% include 'material/includes/material_css.html' %}
+    {% include 'material/includes/material_js.html' %}
+    {% load material_form %}
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+  <div>
+</div>
+    {% block body %}
+
+    {% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+    <div>
+        {% if user.is_authenticated %}
+        <div><a href="{% url 'account_email' %}">Change E-mail</a>
+        <a href="{% url 'account_logout' %}">Sign Out</a></div>
+        {% endif %}
+    </div>
+  </body>
+</html>

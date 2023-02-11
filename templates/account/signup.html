@@ -1,0 +1,32 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load account socialaccount %}
+{% block extra_head %} 
+
+{% endblock %}
+{% block title %}Profile Page{% endblock title %}
+{% block content %}
+{% get_providers as socialaccount_providers %}
+{% load material_form %}
+
+
+<grid container spacing="{2} columnt"
+<img style="width: 60%; height: auto; margin: auto; margin-top: 5%; display:block" src="{% static 'images/350-w-headline.png' %}" />
+<form method="POST">
+  {% csrf_token %}
+  {% form form=form %}{% endform %}
+  <button type="submit" name="_submit" class="btn">Submit</button>
+</form>
+
+{% if socialaccount_providers %}
+
+<div class="socialaccount_ballot">
+  <ul class="socialaccount_providers">
+    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+  </ul>
+</div>
+{% include "socialaccount/snippets/login_extra.html" %}
+{% endif %}
+
+<p>Already have an account? Then please <a href="{{ login_url }}">sign in</a>.</p>
+{% endblock %}

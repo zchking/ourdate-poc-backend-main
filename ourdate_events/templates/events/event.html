@@ -1,0 +1,55 @@
+{% extends 'events/base.html' %}
+
+{% block title %}
+{{ event.title }}
+{% endblock %}
+{% load static %}
+{% load easy_maps_tags  %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    
+<div class="hero" id="hero-{{ event.id }}">
+</div>
+ {% if event.author.profile.avatar.url %}
+<img height="64px" width="64px" src="{{ event.author.profile.avatar.url }}" alt="picture of {{event.author.username}}">
+{% else %}
+<img height="64px" width="64px" src="{% static "images/350-w-headline.png" %}" alt="picture of {{event.author.username}}">
+{% endif %}
+Currated by {{ event.author.username }}
+<p>
+  {{ event.start_time }} -
+  {{ event.end_time }}
+</p>
+ <button>Register</button>
+  <p>{{ event.description }}</p>
+  {% if user.username == event.author.username %}
+  <p> <a href="edit/">edit event</a></p>
+  {% endif %}
+  {% if event.fee == 0.00 %}
+  <p> Free Event!</p>
+  {% else %}
+  <p>${{ event.fee }}</p>
+  {% endif %}
+  {% if event.address %}
+    <p>{{ event.address }}</p>
+  <div>
+    {% easy_map event.address 400 400 %}
+  </div>
+
+
+  <style>
+		#hero-{{ event.id }} {
+
+			background: url("{{ event.hero_image.url }}") 50% 50% no-repeat;
+			
+			width: 100%;
+			height: 300px;
+			background-size: contain;
+		}
+		#hero-{{ event.id }}:hover {
+			opacity: 0.5;
+		}
+		</style>			
+  {% endif %}
+{% endblock %}

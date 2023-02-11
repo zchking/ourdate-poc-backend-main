@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<link rel="stylesheet" href="{% static 'ourdate/theme/base.css' %}" />
+<head>
+<meta name="viewport" content="initial-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta charset="utf-8">
+  <title>{% block title %}OurDate{% endblock %}</title>
+</head>
+<body>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+
+</body>
+</html>
