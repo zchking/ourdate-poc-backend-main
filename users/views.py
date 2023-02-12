@@ -53,12 +53,12 @@ def signup(request):
             # you have dumplciate code:)  try again and show meit plz
             # it's on you local I can't visit it :)
             # do you want me to share screen or send you github with these files?
+            # yes github is better, I can fork your code then push it.
 
             return redirect(reverse("profile_edit", kwargs={"user_id": user.id}))
     else:
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
-
 
 
 def log_in(request):
