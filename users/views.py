@@ -12,9 +12,23 @@ def profile(request):
     return render(request, 'users/profile.html')
 
 
+# users/views.py
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate, logout
+from django.urls import reverse
+from .models import Profile
+from .forms import SignUpForm, LogInForm, UpdateProfileForm
+from django.contrib.auth.decorators import login_required
+
+
 @login_required
-def profile_edit(request, profile_id):
-    profile = Profile.objects.get(id=profile_id)
+def profile(request):
+    return render(request, 'users/profile.html')
+
+
+@login_required
+def profile_edit(request, user_id):
+    profile = Profile.objects.get(user=user_id)
     error = False
     if request.method == 'POST':
         form = UpdateProfileForm(request.POST)
@@ -32,10 +46,19 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('home')
+            # visit accounts/profile/edit/2/ and send the screenshot to me plz
+            # are you there?
+            # yes http://127.0.0.1:8000/accounts/profile/edit/2/ ?
+            # will it restart auto when modify code? yes, we can try runserver
+            # you have dumplciate code:)  try again and show meit plz
+            # it's on you local I can't visit it :)
+            # do you want me to share screen or send you github with these files?
+
+            return redirect(reverse("profile_edit", kwargs={"user_id": user.id}))
     else:
         form = SignUpForm()
     return render(request, 'users/signup.html', {'form': form})
+
 
 
 def log_in(request):
