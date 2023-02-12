@@ -99,10 +99,17 @@ LOGOUT_REDIRECT_URL = 'home'
 
 # Email
 ACCOUNT_EMAIL_REQUIRED = True
+# for dev close verify mail
+# @TODO change back to mandatory after dev
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_SIGNUP_REDIRECT_URL = "/accounts/profile/edit/"
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_ADAPTER = "users.adapter.AccountAdapter"
+# Social accounts
+SOCIALACCOUNT_AUTO_SIGNUP = True
+
 DEFAULT_FROM_EMAIL = '"OurDate (DO NOT REPLY)" <donot-reply@mail.ourdate-app.com>'
 if os.uname().sysname == 'Darwin':
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -178,12 +185,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-# Social accounts
-
-ACCOUNT_EMAIL_REQUIRED = True
-SOCIALACCOUNT_AUTO_SIGNUP = True
-
 
 apple_client_id = os.getenv('APPLE_CLIENT_ID')  # Your service identifier.
 # The Key ID (visible in the "View Key Details" page).

@@ -42,7 +42,9 @@ class UpdateProfileForm(forms.ModelForm):
     ).values_list('date_activities', flat=True)
     diet_choices = Diet.objects.all().values_list()
     diet_selection = Profile.objects.filter().values_list('diet', flat=True)
-    education_choices = Education.objects.all().values_list()
+    education_choices = [(e.id, e.school) for e in Education.objects.all()]
+    # we'd better write the choice like this.As many model have more than one fields
+    # it will big bug if there are >2 fields for choices.
     education_selection = Profile.objects.filter().values_list('education', flat=True)
     family_plans_choices = FamilyPlans.objects.all().values_list()
     family_plans_selection = Profile.objects.filter(
@@ -92,7 +94,7 @@ class UpdateProfileForm(forms.ModelForm):
         choices=family_plans_choices,
         initial=family_plans_selection,
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check'}))
-    gender = forms.ChoiceField(
+    gender = forms.MultipleChoiceField(
         choices=gender_choices,
         initial=gender_selection,
         widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-check'}))

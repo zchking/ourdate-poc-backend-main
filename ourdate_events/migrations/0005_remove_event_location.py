@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('ourdate_events', '0004_event_registration_limit'),
+        ("ourdate_events", "0004_event_registration_limit"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='event',
-            name='location',
+            model_name="event",
+            name="location",
         ),
     ]
